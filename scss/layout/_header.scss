@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    background-color: #ffffff;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-weight:$font-weight-medium;
+    text-transform: uppercase;
+    color: #111111;
+
+    margin-bottom: 1rem;
+    justify-self: center;
+}

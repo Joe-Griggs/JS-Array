@@ -1,0 +1,69 @@
+.email-submit {
+    position: relative;
+    padding: 0.6rem 1rem 0.8rem 1rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        right: 1rem;
+        border-top: 1px solid #404046;
+
+        
+    }
+
+    h2 {
+        font-size: 0.9rem;
+        font-weight: $font-weight-normal;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+    }
+
+    .email-input-box {
+        padding: 0.4rem 0.7rem;
+        border-radius: 7px;
+        background-color: #3d3d42;
+    }
+
+    label {
+        display: block;
+        color: #bdbdc3;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+    }
+
+    #emailInput {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.2rem 0;
+        border: none;
+        background-color: transparent;
+        color: #ffffff;
+
+
+        &::placeholder {
+            color: #ffffff;
+            opacity: 1;
+        }
+    }
+
+    #submitButton {
+        display: block;
+        width: 100%;
+        margin-top: 0.6rem;
+        padding: 0.9rem 1rem;
+        border-radius: 7px;
+        border: none;
+        background-color: #a0bea2;
+
+        color: #ffffff;
+        font-weight: $font-weight-bold;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #788f7a;
+        }
+    }
+}

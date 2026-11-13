@@ -1,0 +1,127 @@
+header {
+  display: flex;
+  background-color: #ffffff;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "poppins", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #111111;
+  margin-bottom: 1rem;
+  justify-self: center;
+}
+
+.image-display {
+  padding: 2rem 0.7rem;
+}
+.image-display img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.email-submit {
+  position: relative;
+  padding: 0.6rem 1rem 0.8rem 1rem;
+}
+.email-submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  right: 1rem;
+  border-top: 1px solid #404046;
+}
+.email-submit h2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+.email-submit .email-input-box {
+  padding: 0.4rem 0.7rem;
+  border-radius: 7px;
+  background-color: #3d3d42;
+}
+.email-submit label {
+  display: block;
+  color: #bdbdc3;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.email-submit #emailInput {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.2rem 0;
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+}
+.email-submit #emailInput::placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+.email-submit #submitButton {
+  display: block;
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.9rem 1rem;
+  border-radius: 7px;
+  border: none;
+  background-color: #a0bea2;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.email-submit #submitButton:hover {
+  background-color: #788f7a;
+}
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+  font-family: "poppins", sans-serif;
+}
+
+.image-submit-box {
+  margin: 0 auto;
+  padding-bottom: 0.8rem;
+  background-color: #1d1d1f;
+}
+
+.collection {
+  padding: 1rem;
+}
+.collection h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.collection .email-one-collection {
+  display: block;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #c2c2c5;
+}
+.collection .email-one-collection h3 {
+  margin: 0 0 0.5rem;
+}
+.collection .email-one-collection .collection-images {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.collection .email-one-collection .collection-images img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/*# sourceMappingURL=styles.css.map */
