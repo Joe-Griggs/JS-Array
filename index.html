@@ -19,23 +19,25 @@
                     <img id="randomImage" src="img/Dune Part 2 paul walk.jpg" alt="Random Image">
                 </div>
             </div>
+            <div class="next-image">
+                <h2>Your Next Image</h2>
+                <p>Click to find out<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14m-7-7 7 7-7 7"></path>
+                </svg></p>
+                <button id="nextImageButton" type="button">Next Image</button>
+            </div>
             <div class="email-submit">
                 <h2>Assign Image to an Email</h2>
                 <div class="email-input-box">
                     <label for="emailInput">Email address</label>
-                    <input type="email" placeholder="Enter Email..." id="emailInput">
+                    <input type="email" placeholder="Enter Email..." id="emailInput" required>
                 </div>
                 <button id="submitButton" type="button">Add Image</button>
             </div>
         </div>
         <div class="collection">
             <h2>Your collections</h2>
-            <div class="email-one-collection">
-                <h3>Email address</h3>
-                <div class="collection-images">
-                    <img src="img/Dune Part 2 paul walk.jpg" alt="Random Image">
-                    <img src="img/Dune Part 2 paul walk.jpg" alt="Random Image">
-                </div>
-            </div>
+            <div id="collectionsContainer"></div>
         </div>
+        <script src="js/email.js"></script>
     </body>
