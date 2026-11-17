@@ -1,30 +1,52 @@
 .collection {
-    padding: 1rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 2.5rem;
+
+    .collection-heading {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.25rem;
+    }
 
     h2 {
         margin: 0;
-        font-size: 1.4rem;
+        color: #25282b;
+        font-size: clamp(1.35rem, 3vw, 1.7rem);
+        font-weight: 600;
+        letter-spacing: -0.04em;
     }
 
-    #noImagesMessage {
-        font-size: 2rem;
-        text-align: center;
-        padding-top: 1rem;
-        margin-top: 1rem;
-        border-top: 2px solid #c2c2c5;
+    .empty-collection {
+        display: grid;
+        min-height: 8.5rem;
+        place-items: center;
+        padding: 1.4rem;
+        border: 1px solid #e1e3e5;
+        border-radius: 14px;
+        background: #ffffff;
+    }
+
+    .empty-collection h3 {
+        margin: 0;
+        color: #25282b;
+        font-size: 1rem;
+        font-weight: 500;
     }
 
     .email-collection {
         display: block;
-        margin-top: 1rem;
-        padding-bottom: 1rem;
-
-        border-bottom: 1px solid #c2c2c5;
-        border-top: 1px solid #c2c2c5;
+        margin-top: 0;
+        padding: 1rem;
+        border: 1px solid #e1e3e5;
+        border-radius: 14px;
+        background: #ffffff;
 
         h3 {
-            margin: 0.5rem 0 0.5rem;
+            margin: 0 0 0.8rem;
+            color: #343632;
+            font-size: 0.9rem;
             font-weight: 500;
+            overflow-wrap: anywhere;
         }
 
         .collection-images {
@@ -37,7 +59,7 @@
                 width: 100%;
                 aspect-ratio: 1 / 1;
                 object-fit: cover;
-                border-radius: 10px;
+                border-radius: 8px;
             }
         }
 
@@ -48,19 +70,7 @@
     .collection {
         display: block;
         margin-top: 0;
-        padding-top: 0;
-    }
-
-    .collection h2 {
-        padding-bottom: 1rem;
-        border-bottom: 2px solid #c2c2c5;
-    }
-
-    .collection #noImagesMessage {
-        display: block;
-        margin: 1rem 0;
-        padding: 1rem 0;
-        border-top: 0;
+        padding: 0.5rem 0 3rem;
     }
 
     .collection #collectionsContainer {
@@ -69,10 +79,5 @@
         gap: 1rem;
     }
 
-    .collection .email-collection {
-        margin-top: 0;
-        padding: 1rem;
-        border: 1px solid #c2c2c5;
-        border-radius: 15px;
-    }
 }
+

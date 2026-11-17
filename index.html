@@ -11,14 +11,7 @@
     </head>
     <body>
         <header>
-            <div class="header-brand">
-                <span class="header-mark" aria-hidden="true">IA</span>
-                <div class="header-copy">
-                    <h1>Image Assignment</h1>
-                    <p>Build a collection worth keeping</p>
-                </div>
-            </div>
-            <span class="header-label">Your image space</span>
+            <h1><span class="title-accent">Image</span> Assignment</h1>
         </header>
         <div class="image-submit-box">
             <div class="image-display">
@@ -41,11 +34,16 @@
                     <input type="email" placeholder="Enter Email..." id="emailInput" required>
                 </div>
                 <button id="submitButton" type="button">Add Image</button>
+                <p id="duplicateMessage" role="alert" hidden>The Image is already assigned to that Email.</p>
             </div>
         </div>
         <div class="collection">
-            <h2>Your collections</h2>
-            <h3 id="noImagesMessage">Currently No Images Assigned</h3>
+            <div class="collection-heading">
+                <h2>Your collections</h2>
+            </div>
+            <div class="empty-collection" id="noImagesMessage">
+                <h3>No images assigned yet</h3>
+            </div>
             <div id="collectionsContainer"></div>
         </div>
         <script src="js/email.js"></script>

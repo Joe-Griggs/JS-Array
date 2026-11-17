@@ -1,76 +1,36 @@
 header {
   display: flex;
   box-sizing: border-box;
-  min-height: 5.5rem;
+  min-height: 7rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.9rem 1rem;
+  justify-content: flex-start;
+  padding: 1rem 1.5rem;
   background-color: #ffffff;
-  border-bottom: 1px solid #e8e9e6;
+  border-bottom: 1px solid #e2e4e6;
 }
 
-.header-brand {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.header-mark {
-  display: grid;
-  width: 2.8rem;
-  height: 2.8rem;
-  flex: none;
-  place-items: center;
-  border-radius: 0.85rem;
-  background-color: #1d1d1f;
-  color: #a0bea2;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.header-copy h1 {
+header h1 {
   margin: 0;
-  color: #1d1d1f;
-  font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+  color: #25282b;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.2;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
 }
 
-.header-copy p {
-  margin: 0.2rem 0 0;
-  color: #777a76;
-  font-size: 0.72rem;
-  line-height: 1.35;
+.title-accent {
+  color: #a0bea2;
 }
 
-.header-label {
-  flex: none;
-  padding: 0.45rem 0.7rem;
-  border: 1px solid #e8e9e6;
-  border-radius: 999px;
-  color: #626660;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-
-@media (max-width: 380px) {
-  .header-label {
-    display: none;
-  }
-}
 .image-display {
-  padding: 2rem 0.7rem;
+  padding: 1.25rem 0.7rem;
 }
 .image-display img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 15px;
+  border-radius: 12px;
+  background-color: #303034;
 }
 .image-display img[hidden] {
   display: none;
@@ -84,6 +44,7 @@ header {
     margin: 2rem auto;
     padding: 0 1.5rem;
     border-radius: 15px;
+    box-shadow: 0 18px 45px rgba(29, 29, 31, 0.12);
   }
 }
 @media (min-width: 992px) {
@@ -184,6 +145,10 @@ header {
   color: #ffffff;
   opacity: 1;
 }
+.email-submit #emailInput:focus {
+  outline: none;
+  background-color: #3d3d42;
+}
 .email-submit #submitButton {
   display: block;
   width: 100%;
@@ -200,8 +165,22 @@ header {
   background-color: #788f7a;
 }
 
+#duplicateMessage {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e57373;
+  border-left-width: 4px;
+  border-radius: 6px;
+  background-color: #542b30;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
 body {
-  background-color: #ffffff;
+  background-color: #f2f3f4;
   margin: 0;
   font-family: "poppins", sans-serif;
 }
@@ -224,38 +203,63 @@ body {
   }
   .image-submit-box {
     grid-column: 1;
-    width: calc(100% - 3rem);
+    box-sizing: border-box;
+    width: min(100% - 3rem, 78rem);
+    max-width: none;
     margin: 1.5rem auto;
   }
   .collection {
     grid-column: 1;
-    margin: 0 1.5rem;
+    box-sizing: border-box;
+    width: min(100% - 3rem, 78rem);
+    margin: 0 auto 3rem;
   }
 }
 .collection {
-  padding: 1rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+.collection .collection-heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
 }
 .collection h2 {
   margin: 0;
-  font-size: 1.4rem;
+  color: #25282b;
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
 }
-.collection #noImagesMessage {
-  font-size: 2rem;
-  text-align: center;
-  padding-top: 1rem;
-  margin-top: 1rem;
-  border-top: 2px solid #c2c2c5;
+.collection .empty-collection {
+  display: grid;
+  min-height: 8.5rem;
+  place-items: center;
+  padding: 1.4rem;
+  border: 1px solid #e1e3e5;
+  border-radius: 14px;
+  background: #ffffff;
+}
+.collection .empty-collection h3 {
+  margin: 0;
+  color: #25282b;
+  font-size: 1rem;
+  font-weight: 500;
 }
 .collection .email-collection {
   display: block;
-  margin-top: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #c2c2c5;
-  border-top: 1px solid #c2c2c5;
+  margin-top: 0;
+  padding: 1rem;
+  border: 1px solid #e1e3e5;
+  border-radius: 14px;
+  background: #ffffff;
 }
 .collection .email-collection h3 {
-  margin: 0.5rem 0 0.5rem;
+  margin: 0 0 0.8rem;
+  color: #343632;
+  font-size: 0.9rem;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 .collection .email-collection .collection-images {
   display: grid;
@@ -267,35 +271,19 @@ body {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 @media (min-width: 992px) {
   .collection {
     display: block;
     margin-top: 0;
-    padding-top: 0;
-  }
-  .collection h2 {
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #c2c2c5;
-  }
-  .collection #noImagesMessage {
-    display: block;
-    margin: 1rem 0;
-    padding: 1rem 0;
-    border-top: 0;
+    padding: 0.5rem 0 3rem;
   }
   .collection #collectionsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
     gap: 1rem;
-  }
-  .collection .email-collection {
-    margin-top: 0;
-    padding: 1rem;
-    border: 1px solid #c2c2c5;
-    border-radius: 15px;
   }
 }
 .next-image {

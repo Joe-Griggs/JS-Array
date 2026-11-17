@@ -6,6 +6,7 @@ const randomImage = document.querySelector('#randomImage');
 const nextImageButton = document.querySelector('#nextImageButton');
 const noImagesMessage = document.querySelector('#noImagesMessage');
 const imageLoadingMessage = document.querySelector('#imageLoadingMessage');
+const duplicateMessage = document.querySelector('#duplicateMessage');
 
 const collections = [];
 let picsumImages = [];
@@ -40,6 +41,10 @@ emailInput.addEventListener('blur', () => {
     }
 });
 
+emailInput.addEventListener('input', () => {
+    duplicateMessage.hidden = true;
+});
+
 submitButton.addEventListener('click', () => {
     if (!emailInput.reportValidity()) return;
 
@@ -54,9 +59,13 @@ submitButton.addEventListener('click', () => {
         collections.push(collection);
     }
 
-    if (collection.images.includes(randomImage.src)) return;
+    if (collection.images.includes(randomImage.src)) {
+        duplicateMessage.hidden = false;
+        return;
+    }
 
     collection.images.push(randomImage.src);
+    duplicateMessage.hidden = true;
     renderCollections();
     emailInput.value = '';
     emailInput.placeholder = defaultPlaceholder;
@@ -82,6 +91,7 @@ async function loadPicsumImages() {
 }
 
 function showNextImage() {
+    duplicateMessage.hidden = true;
     const availableImages = picsumImages.filter(image => image.id !== currentImageId);
     const randomIndex = Math.floor(Math.random() * availableImages.length);
     const image = availableImages[randomIndex];

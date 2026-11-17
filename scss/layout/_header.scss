@@ -1,65 +1,23 @@
 header {
     display: flex;
     box-sizing: border-box;
-    min-height: 5.5rem;
+    min-height: 7rem;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.9rem 1rem;
+    justify-content: flex-start;
+    padding: 1rem 1.5rem;
     background-color: #ffffff;
-    border-bottom: 1px solid #e8e9e6;
+    border-bottom: 1px solid #e2e4e6;
 }
 
-.header-brand {
-    display: flex;
-    min-width: 0;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.header-mark {
-    display: grid;
-    width: 2.8rem;
-    height: 2.8rem;
-    flex: none;
-    place-items: center;
-    border-radius: 0.85rem;
-    background-color: #1d1d1f;
-    color: #a0bea2;
-    font-size: 0.85rem;
-    font-weight: $font-weight-bold;
-    letter-spacing: 0.04em;
-}
-
-.header-copy h1 {
+header h1 {
     margin: 0;
-    color: #1d1d1f;
-    font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+    color: #25282b;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: $font-weight-semibold;
-    letter-spacing: -0.035em;
-    line-height: 1.2;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
 }
 
-.header-copy p {
-    margin: 0.2rem 0 0;
-    color: #777a76;
-    font-size: 0.72rem;
-    line-height: 1.35;
-}
-
-.header-label {
-    flex: none;
-    padding: 0.45rem 0.7rem;
-    border: 1px solid #e8e9e6;
-    border-radius: 999px;
-    color: #626660;
-    font-size: 0.65rem;
-    font-weight: $font-weight-medium;
-    letter-spacing: 0.04em;
-}
-
-@media (max-width: 380px) {
-    .header-label {
-        display: none;
-    }
+.title-accent {
+    color: #a0bea2;
 }

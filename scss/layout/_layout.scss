@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #f2f3f4;
     margin: 0;
     font-family: 'poppins', sans-serif;
 }
@@ -24,12 +24,16 @@ body {
 
     .image-submit-box {
         grid-column: 1;
-        width: calc(100% - 3rem);
+        box-sizing: border-box;
+        width: min(calc(100% - 3rem), 78rem);
+        max-width: none;
         margin: 1.5rem auto;
     }
 
     .collection {
         grid-column: 1;
-        margin: 0 1.5rem;
+        box-sizing: border-box;
+        width: min(calc(100% - 3rem), 78rem);
+        margin: 0 auto 3rem;
     }
 }

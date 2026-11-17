@@ -47,6 +47,11 @@
             color: #ffffff;
             opacity: 1;
         }
+
+        &:focus {
+            outline: none;
+            background-color: #3d3d42;
+        }
     }
 
     #submitButton {
@@ -66,4 +71,19 @@
             background-color: #788f7a;
         }
     }
+
+}
+
+#duplicateMessage {
+    margin: 0.75rem 0 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e57373;
+    border-left-width: 4px;
+    border-radius: 6px;
+    background-color: #542b30;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: $font-weight-semibold;
+    line-height: 1.4;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
