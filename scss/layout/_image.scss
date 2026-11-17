@@ -7,4 +7,83 @@
         height: auto;
         border-radius: 15px;
     }
+
+    img[hidden] {
+        display: none;
+    }
+}
+
+@media (min-width: $breakpoint-s) {
+    .image-submit-box {
+        box-sizing: border-box;
+        width: calc(100% - 3rem);
+        max-width: none;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+        border-radius: 15px;
+    }
+}
+
+@media (min-width: $breakpoint-l) {
+    .image-submit-box {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(17rem, 1fr);
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 1.5rem;
+        height: clamp(22rem, 55vh, 34rem);
+        padding: 1rem;
+    }
+
+    .image-display {
+        display: flex;
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        min-width: 0;
+        min-height: 0;
+        padding: 1rem 0.7rem;
+    }
+
+    .image-display .random-image {
+        display: flex;
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+    }
+
+    .image-display img {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        min-height: 0;
+        margin: 0;
+        object-fit: cover;
+    }
+
+    .image-submit-box .email-submit {
+        display: flex;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        flex-direction: column;
+        align-self: stretch;
+        padding: 1rem;
+    }
+
+    .image-submit-box .email-submit::before {
+        content: none;
+    }
+
+    .image-submit-box .email-submit #submitButton {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .image-submit-box .next-image {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        align-self: end;
+        margin: 0 0 1rem;
+        border-top: 1px solid #404046;
+        padding: 1rem 0 0;
+    }
 }

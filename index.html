@@ -11,12 +11,20 @@
     </head>
     <body>
         <header>
-            <h1>Image Assignment</h1>
+            <div class="header-brand">
+                <span class="header-mark" aria-hidden="true">IA</span>
+                <div class="header-copy">
+                    <h1>Image Assignment</h1>
+                    <p>Build a collection worth keeping</p>
+                </div>
+            </div>
+            <span class="header-label">Your image space</span>
         </header>
         <div class="image-submit-box">
             <div class="image-display">
                 <div class="random-image">
-                    <img id="randomImage" src="img/Dune Part 2 paul walk.jpg" alt="Random Image">
+                    <p id="imageLoadingMessage" role="status">Loading image...</p>
+                    <img id="randomImage" alt="Random Image" hidden>
                 </div>
             </div>
             <div class="next-image">
@@ -37,6 +45,7 @@
         </div>
         <div class="collection">
             <h2>Your collections</h2>
+            <h3 id="noImagesMessage">Currently No Images Assigned</h3>
             <div id="collectionsContainer"></div>
         </div>
         <script src="js/email.js"></script>

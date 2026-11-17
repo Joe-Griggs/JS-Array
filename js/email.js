@@ -4,10 +4,22 @@ const defaultPlaceholder = emailInput.placeholder;
 const collectionsContainer = document.querySelector('#collectionsContainer');
 const randomImage = document.querySelector('#randomImage');
 const nextImageButton = document.querySelector('#nextImageButton');
+const noImagesMessage = document.querySelector('#noImagesMessage');
+const imageLoadingMessage = document.querySelector('#imageLoadingMessage');
 
 const collections = [];
 let picsumImages = [];
 let currentImageId = null;
+
+randomImage.addEventListener('load', () => {
+    randomImage.hidden = false;
+    imageLoadingMessage.hidden = true;
+});
+
+randomImage.addEventListener('error', () => {
+    imageLoadingMessage.textContent = 'Could not load image. Please try again.';
+    imageLoadingMessage.hidden = false;
+});
 
 nextImageButton.disabled = true;
 submitButton.disabled = true;
@@ -42,10 +54,13 @@ submitButton.addEventListener('click', () => {
         collections.push(collection);
     }
 
+    if (collection.images.includes(randomImage.src)) return;
+
     collection.images.push(randomImage.src);
     renderCollections();
     emailInput.value = '';
     emailInput.placeholder = defaultPlaceholder;
+    showNextImage();
 });
 
 async function loadPicsumImages() {
@@ -72,12 +87,30 @@ function showNextImage() {
     const image = availableImages[randomIndex];
 
     currentImageId = image.id;
-    randomImage.src = `https://picsum.photos/id/${image.id}/600/400`;
+    const dimensions = getImageDimensions();
+    randomImage.src = `https://picsum.photos/id/${image.id}/${dimensions.width}/${dimensions.height}`;
     randomImage.alt = `Photo by ${image.author}`;
+}
+
+function getImageDimensions() {
+    const imageFrame = randomImage.parentElement;
+    const frame = imageFrame.getBoundingClientRect();
+    const hasDesktopFrame = getComputedStyle(imageFrame).display === 'flex';
+    const aspectRatio = hasDesktopFrame && frame.width > 0 && frame.height > 0
+        ? frame.width / frame.height
+        : 3 / 2;
+    const width = 1920;
+
+    return {
+        width,
+        height: Math.round(width / aspectRatio),
+    };
 }
 
 function renderCollections() {
     collectionsContainer.replaceChildren();
+    noImagesMessage.remove();
+
 
     collections.forEach(collection => {
         const collectionElement = document.createElement('div');
