@@ -33,6 +33,11 @@
         font-weight: 500;
     }
 
+    #collectionsContainer {
+        display: grid;
+        gap: 1.5rem;
+    }
+
     .email-collection {
         display: block;
         margin-top: 0;
@@ -40,6 +45,7 @@
         border: 1px solid #e1e3e5;
         border-radius: 14px;
         background: #ffffff;
+
 
         h3 {
             margin: 0 0 0.8rem;
@@ -74,9 +80,7 @@
     }
 
     .collection #collectionsContainer {
-        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-        gap: 1rem;
     }
 
 }

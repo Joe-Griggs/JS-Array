@@ -67,9 +67,6 @@ submitButton.addEventListener('click', () => {
     collection.images.push(randomImage.src);
     duplicateMessage.hidden = true;
     renderCollections();
-    emailInput.value = '';
-    emailInput.placeholder = defaultPlaceholder;
-    showNextImage();
 });
 
 async function loadPicsumImages() {
