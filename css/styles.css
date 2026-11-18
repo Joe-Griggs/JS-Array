@@ -169,7 +169,6 @@ header h1 {
   margin: 0.75rem 0 0;
   padding: 0.75rem 1rem;
   border: 1px solid #e57373;
-  border-left-width: 4px;
   border-radius: 6px;
   background-color: #542b30;
   color: #ffffff;
@@ -270,12 +269,40 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
 }
-.collection .email-collection .collection-images img {
+.collection .email-collection .collection-images .collection-image {
+  position: relative;
+}
+.collection .email-collection .collection-images .collection-image img {
   display: block;
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 8px;
+}
+.collection .email-collection .collection-images .collection-image .delete-image {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #e57373;
+  background-color: #542B30;
+  color: #ffffff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.collection .email-collection .collection-images .collection-image:hover .delete-image, .collection .email-collection .collection-images .collection-image:focus-within .delete-image {
+  opacity: 1;
+}
+.collection .email-collection .collection-images .collection-image .delete-image:focus-visible {
+  outline: 2px solid #25282b;
+  outline-offset: 2px;
 }
 
 @media (min-width: 992px) {
@@ -286,6 +313,11 @@ body {
   }
   .collection #collectionsContainer {
     grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  }
+}
+@media (hover: none) {
+  .collection .collection-image .delete-image {
+    opacity: 1;
   }
 }
 .next-image {

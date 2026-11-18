@@ -8,9 +8,32 @@ const noImagesMessage = document.querySelector('#noImagesMessage');
 const imageLoadingMessage = document.querySelector('#imageLoadingMessage');
 const duplicateMessage = document.querySelector('#duplicateMessage');
 
-const collections = [];
+const collectionsStorageKey = 'image-assignment-collections'; // Keep saved collections under a consistent browser-storage key.
+const collections = loadCollections(); // Restore this browser's saved collections when the page starts.
 let picsumImages = [];
 let currentImageId = null;
+
+function loadCollections() {
+    try {
+        const savedCollections = localStorage.getItem(collectionsStorageKey); // Read the saved JSON string from localStorage.
+        if (savedCollections === null) return []; // Start with no collections on the first visit.
+
+        const parsedCollections = JSON.parse(savedCollections); // Turn the saved JSON string back into JavaScript data.
+        if (!Array.isArray(parsedCollections) || !parsedCollections.every(collection =>
+            collection &&
+            typeof collection.email === 'string' &&
+            Array.isArray(collection.images) &&
+            collection.images.every(imageUrl => typeof imageUrl === 'string')
+        )) {
+            throw new Error('Saved collections have an invalid format.');
+        }
+
+        return parsedCollections;
+    } catch (error) {
+        console.error('Could not load saved collections.', error); // Report invalid data or unavailable browser storage.
+        return [];
+    }
+}
 
 randomImage.addEventListener('load', () => {
     randomImage.hidden = false;
@@ -65,6 +88,7 @@ submitButton.addEventListener('click', () => {
     }
 
     collection.images.push(randomImage.src);
+    localStorage.setItem(collectionsStorageKey, JSON.stringify(collections)); // Save the updated collections so they survive a refresh.
     duplicateMessage.hidden = true;
     renderCollections();
 });
@@ -116,8 +140,7 @@ function getImageDimensions() {
 
 function renderCollections() {
     collectionsContainer.replaceChildren();
-    noImagesMessage.remove();
-
+    if (collections.length > 0) noImagesMessage.remove(); // Keep the empty-state message until at least one collection exists.
 
     collections.forEach(collection => {
         const collectionElement = document.createElement('div');
@@ -130,13 +153,42 @@ function renderCollections() {
         imagesContainer.className = 'collection-images';
 
         collection.images.forEach(imageUrl => {
+            const imageWrapper = document.createElement('div'); // Group each image with its delete control for overlay positioning.
+            imageWrapper.className = 'collection-image';
+
             const image = document.createElement('img');
             image.src = imageUrl;
             image.alt = `Image assigned to ${collection.email}`;
-            imagesContainer.append(image);
+
+            const imageDelete = document.createElement('button');
+            imageDelete.type = 'button';
+            imageDelete.className = 'delete-image';
+            imageDelete.setAttribute('aria-label', `Delete image from ${collection.email}`);
+            imageDelete.textContent = '×'; // Show a red X while keeping the button accessible by name.
+            imageDelete.addEventListener('click', () => {
+                const imageIndex = collection.images.indexOf(imageUrl);
+                if (imageIndex === -1) return;
+
+                collection.images.splice(imageIndex, 1); // Remove this image from its collection.
+                if (collection.images.length === 0) {
+                    collections.splice(collections.indexOf(collection), 1); // Remove the collection when its last image is deleted.
+                }
+
+                localStorage.setItem(collectionsStorageKey, JSON.stringify(collections)); // Persist the deletion across refreshes.
+                renderCollections();
+            });
+
+            imageWrapper.append(image, imageDelete);
+            imagesContainer.append(imageWrapper);
         });
 
         collectionElement.append(heading, imagesContainer);
         collectionsContainer.append(collectionElement);
     });
+
+    if (collections.length === 0 && noImagesMessage.parentElement === null) {
+        collectionsContainer.parentElement.insertBefore(noImagesMessage, collectionsContainer); // Restore the empty state after the last image is deleted.
+    }
 }
+
+renderCollections(); // Display restored collections immediately after the page loads.
